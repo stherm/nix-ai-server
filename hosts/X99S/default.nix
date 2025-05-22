@@ -21,40 +21,44 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
+    ./postgre.nix
   ];
 
   networking.hostName = "X99S";
   networking.domain = "steffen.fail";
 
-  services.postgresql = {
-    settings.port = 5432;
-    enable = true;
-    settings = {
-      #ssl = true;
-      #ssl_cert_file = "/var/lib/acme/${config.networking.domain}/cert.pem";
-      #ssl_key_file = "/var/lib/acme/${config.networking.domain}/key.pem";
-    };
-    ensureDatabases = [ "fw_grafschaft" ];
-    enableTCPIP = true;
-    authentication = pkgs.lib.mkOverride 10 ''
-      #type database DBuser origin-address auth-method
-      local all       all     trust
-      host  all      prosinsky     0.0.0.0/0   scram-sha-256
-      host all       prosinsky     ::/0        scram-sha-256
-      host  all      postgres     0.0.0.0/0   scram-sha-256
-      host all       postgres     ::/0        scram-sha-256
-      host  fw_grafschaft      all     0.0.0.0/0   scram-sha-256
-      host fw_grafschaft       all     ::/0        scram-sha-256
-    '';
+  #services.postgresql = {
+  #  settings.port = 5432;
+  #  enable = true;
+  #  settings = {
+  #    ssl = true;
+  #    ssl_cert_file = "/var/lib/acme/${config.networking.domain}/cert.pem";
+  #    ssl_key_file = "/var/lib/acme/${config.networking.domain}/key.pem";
+  #  };
+  #  ensureDatabases = [ "fw_grafschaft" ];
+  #  enableTCPIP = true;
+  #  authentication = pkgs.lib.mkOverride 10 ''
+  #    #type database DBuser origin-address auth-method
+  #    local all       all     trust
+  #    host  all      prosinsky     0.0.0.0/0   scram-sha-256
+  #    host all       prosinsky     ::/0        scram-sha-256
+  #    host  all      postgres     0.0.0.0/0   scram-sha-256
+  #    host all       postgres     ::/0        scram-sha-256
+  #    host  fw_grafschaft      all     0.0.0.0/0   scram-sha-256
+  #    host fw_grafschaft       all     ::/0        scram-sha-256
+  #  '';
 
-  };
-  users.users.postgres.extraGroups = [ "nginx" ];
-  systemd.services.postgresql.serviceConfig = {
-    User = "postgres";
-    #SupplementaryGroups = [ "nginx" ];
-  };
+  #};
+  #users.users.postgres.extraGroups = [
+  #  "nginx"
+  #  "acme"
+  #];
+  #systemd.services.postgresql.serviceConfig = {
+  #  User = "postgres";
+  #  #SupplementaryGroups = [ "nginx" ];
+  #};
 
-  networking.firewall.allowedTCPPorts = [ 5432 ];
+  #networking.firewall.allowedTCPPorts = [ 5432 ];
 
   services = {
     nginx.enable = true;
