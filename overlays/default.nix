@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-   # nix-core packages accessible through 'pkgs.core'
+  # nix-core packages accessible through 'pkgs.core'
   core-packages = final: prev: { core = inputs.core.packages."${final.system}"; };
 
   # custom local packages accessible through 'pkgs.local'
