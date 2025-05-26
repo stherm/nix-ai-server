@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  pkgs,
   ...
 }:
 
@@ -28,6 +29,9 @@
       ];
     };
 
-    open-webui.enable = true;
+    open-webui = {
+      enable = true;
+      package = pkgs.stable.open-webui; # v0.6.9. v0.6.10 fails to build
+    };
   };
 }
