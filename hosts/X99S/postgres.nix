@@ -1,4 +1,4 @@
-# Inhalt für ./postgre.nix
+# Inhalt für ./postgres.nix
 { config, pkgs, ... }:
 
 let

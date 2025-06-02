@@ -1,4 +1,4 @@
 {
   common = import ./common;
-  nvidia = import ./nvidia;
+  ollama = import ./ollama;
 }

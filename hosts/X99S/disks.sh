@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-#SSD='/dev/disk/by-id/ata-Samsung_SSD_840_EVO_250GB_S1DBNSBFB38110X'
 SSD='/dev/disk/by-id/ata-Patriot_P210_2048GB_P210PBCB250210000011'
-#DATA='/dev/disk/by-id/ata-Patriot_P210_2048GB_P210PBCB250210000011'
 MNT='/mnt'
 SWAP_GB=32
 
@@ -54,25 +52,6 @@ mount -t vfat -o fmask=0077,dmask=0077,iocharset=iso8859-1 "${SSD}-part1" "$MNT/
 
 echo "Enabling swap..."
 swapon "${SSD}-part2"
-
-#echo "Wiping filesystem on $DATA..."
-#wipefs -a $DATA
-
-#echo "Clearing partition table on $DATA..."
-#sgdisk --zap-all $DATA
-
-#echo "Partitioning $DATA..."
-#sgdisk -n1:0:0 -t1:8304 -c1:DATA $DATA
-#partprobe -s $DATA
-#udevadm settle
-
-#wait_for_device ${DATA}-part1
-
-#echo "Formatting partitions..."
-#mkfs.ext4 -L DATA "${DATA}-part1"
-
-#echo "Mounting partitions..."
-#mount -o X-mount.mkdir "${DATA}-part1" "$MNT"/data
 
 echo "Partitioning and setup complete:"
 lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
