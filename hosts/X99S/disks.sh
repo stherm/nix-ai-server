@@ -15,7 +15,13 @@ wait_for_device() {
 }
 
 if ! command -v sgdisk &> /dev/null; then
+  echo "sgdisk not found, installing gptfdisk..."
   nix-env -iA nixos.gptfdisk
+fi
+
+if ! command -v partprobe &> /dev/null; then
+  echo "partprobe not found, installing parted..."
+  nix-env -iA nixos.parted
 fi
 
 swapoff --all
