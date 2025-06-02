@@ -11,7 +11,7 @@ in
       user = mkDefault "ollama";
       group = mkDefault "ollama";
       acceleration = mkDefault "cuda";
-      models = mkDefault "/data/ollama/models";
+      # models = mkDefault "/data/ollama/models";
     };
 
     systemd.tmpfiles.rules = [

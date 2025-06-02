@@ -39,11 +39,6 @@
     ];
   };
 
-  fileSystems."/data" = {
-    device = "/dev/disk/by-label/DATA";
-    fsType = "ext4";
-  };
-
   swapDevices = [
     { device = "/dev/disk/by-label/SWAP"; }
   ];
