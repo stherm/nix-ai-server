@@ -18,7 +18,7 @@
     nginx.enable = true;
 
     ollama = {
-      # enable = true;
+      enable = true;
       loadModels = [
         "mistral:7b"
         "deepseek-r1:14b"
@@ -28,7 +28,7 @@
     };
 
     open-webui = {
-      # enable = true;
+      enable = true;
       package = pkgs.open-webui;
     };
   };
