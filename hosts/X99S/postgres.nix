@@ -37,9 +37,6 @@ in
         chmod 600 server.key
         chmod 644 server.crt
         chown postgres:postgres server.key server.crt
-        echo "PostgreSQL certificates generated or renewed"
-      else
-        echo "PostgreSQL certificates are up to date"
       fi
     '';
     serviceConfig = {
@@ -61,6 +58,7 @@ in
     enable           = true;
     package          = pkgs.postgresql_16;
     dataDir          = "/var/lib/postgresql/16";
+    initialize       = false;
     enableTCPIP      = true;
     settings.port    = 5432;
     ensureDatabases  = [ "fw_grafschaft" ];
