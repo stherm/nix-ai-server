@@ -58,7 +58,6 @@ in
     enable           = true;
     package          = pkgs.postgresql_16;
     dataDir          = "/var/lib/postgresql/16";
-    initialize       = false;
     enableTCPIP      = true;
     settings.port    = 5432;
     ensureDatabases  = [ "fw_grafschaft" ];
