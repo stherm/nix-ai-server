@@ -1,8 +1,21 @@
 {
-  boot.loader.grub = {
-    enable = true;
-    devices = [ "nodev" ];
-    efiSupport = true;
-    useOSProber = true;
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+
+{
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
+    };
+
+    efi.canTouchEfiVariables = true;
+
+    efi.efiSysMountPoint = "/boot";
+
+    efi.efiInstallAsRemovable = true;
   };
 }
