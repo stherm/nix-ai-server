@@ -17,10 +17,8 @@
   services = {
     nginx.enable = true;
 
-    openssh.enable = true;
-
     ollama = {
-      enable = true;
+      # enable = true;
       loadModels = [
         "mistral:7b"
         "deepseek-r1:14b"
@@ -30,8 +28,8 @@
     };
 
     open-webui = {
-      enable = true;
-      package = pkgs.stable.open-webui; # v0.6.9. v0.6.10 fails to build
+      # enable = true;
+      package = pkgs.open-webui;
     };
   };
 }
