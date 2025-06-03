@@ -1,9 +1,8 @@
 {
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 10;
-    };
-    efi.canTouchEfiVariables = true;
+  boot.loader.grub = {
+    enable = true;
+    devices = [ "nodev" ];
+    efiSupport = true;
+    useOSProber = true;
   };
 }
