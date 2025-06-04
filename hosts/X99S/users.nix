@@ -25,6 +25,14 @@
       ];
       sshKeyFiles = [ ../../users/susagi/pubkeys/vde_rsa.pub ];
     };
+
+    tobi = {
+      name = "tobi";
+      extraGroups = [
+        "wheel"
+      ];
+      sshKeyFiles = [ ../../users/tobi/pubkeys/DESKTOP-I3MIIHU.pub ];
+    };
     peter = {
       name = "peter";
       extraGroups = [
