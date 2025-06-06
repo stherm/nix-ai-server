@@ -54,47 +54,34 @@ in
     };
   };
 
-  services.postgresql = {
+services.postgresql = {
     enable           = true;
     package          = pkgs.postgresql_16;
     dataDir          = "/var/lib/postgresql/16";
     enableTCPIP      = true;
     settings.port    = 5432;
-    ensureDatabases  = [ "fw_grafschaft" ];
+    ensureDatabases  = [ "fw_grafschaft" "pnp" ];
     settings         = { ssl = true; };
     authentication   = lib.mkOverride 10 ''
       local all       all                trust
-      hostssl all     prosinsky     0.0.0.0/0   scram-sha-256
-      hostssl all     prosinsky     ::/0        scram-sha-256
-      hostssl all     postgres      0.0.0.0/0   scram-sha-256
-      hostssl all     postgres      ::/0        scram-sha-256
-      hostssl fw_grafschaft all  0.0.0.0/0   scram-sha-256
-      hostssl fw_grafschaft all  ::/0        scram-sha-256
+      # Zugriffe für fw_grafschaft
+      hostssl fw_grafschaft prosinsky     0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft prosinsky     ::/0        scram-sha-256
+      hostssl fw_grafschaft postgres      0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft postgres      ::/0        scram-sha-256
+      
+      # Zugriffe für pnp
+      hostssl pnp     tobi          0.0.0.0/0   scram-sha-256
+      hostssl pnp     tobi          ::/0        scram-sha-256
+      hostssl pnp     steffen       0.0.0.0/0   scram-sha-256
+      hostssl pnp     steffen       ::/0        scram-sha-256
+      hostssl pnp     postgres      0.0.0.0/0   scram-sha-256
+      hostssl pnp     postgres      ::/0        scram-sha-256
+      hostssl pnp     pnp      0.0.0.0/0        scram-sha-256
+      hostssl pnp     pnp      ::/0        scram-sha-256
     '';
-  };
-
-  #services.postgresql = {
-  #  enable           = true;
-  #  package          = pkgs.postgresql_16;
-  #  dataDir         = "/var/lib/postgresql/16-2";
-  #  enableTCPIP      = true;
-  #  settings.port    = 5433;
-  #  ensureDatabases  = [ "pnp" ];
-  #  settings         = { ssl = true; };
-  #  authentication   = lib.mkOverride 10 ''
-  #   local all       all                trust
-  #    hostssl all     tobi     0.0.0.0/0   scram-sha-256
-  #    hostssl all     tobi     ::/0        scram-sha-256
-  #    hostssl all     steffen     0.0.0.0/0   scram-sha-256
-  #    hostssl all     steffen     ::/0        scram-sha-256
-  #    hostssl all     postgres      0.0.0.0/0   scram-sha-256
-  #    hostssl all     postgres      ::/0        scram-sha-256
-  #    hostssl pnp all  0.0.0.0/0   scram-sha-256
-  #    hostssl pnp all  ::/0        scram-sha-256
-  #  '';
-  #};
-
-  networking.firewall.allowedTCPPorts = [ 5432 5533 ];
+};
+  networking.firewall.allowedTCPPorts = [ 5432 ];
   users.users.postgres.extraGroups      = [ "nginx" ];
 }
 
