@@ -62,6 +62,36 @@ services.postgresql = {
     settings.port    = 5432;
     ensureDatabases  = [ "fw_grafschaft" "pnp" ];
     settings         = { ssl = true; };
+    ensureUsers	     = [
+	{name = "tobi";
+	ensureClauses = {
+	login = true;
+	superuser = true;
+	};
+	}
+	{name = "steffen";
+	ensureClauses = {
+	login = true;
+	superuser = true;
+	};
+	}
+	{name = "peter";
+	ensureClauses = {
+	login = true;
+	superuser = true;
+	};
+	}
+	{name = "pnp";
+	ensureClauses = {
+	login = true;
+	};
+	}
+	{name = "fw_grafschaft";
+	ensureClauses = {
+	login = true;
+	};
+	}
+    ];
     authentication   = lib.mkOverride 10 ''
       local all       all                trust
       # Zugriffe für fw_grafschaft
