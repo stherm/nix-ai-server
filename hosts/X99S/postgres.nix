@@ -62,7 +62,7 @@ in
     };
   };
 
-  ervices.pgadmin = {
+  services.pgadmin = {
     enable = true;
     initialEmail = "steffen@portuus.de";
     initialPasswordFile = "/home/steffen/pgpass";
