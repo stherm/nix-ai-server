@@ -73,7 +73,28 @@ in
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [ 5432 ];
+  services.postgresql2 = {
+    enable           = true;
+    package          = pkgs.postgresql_16;
+    dataDir         = "/var/lib/postgresql/16-2";
+    enableTCPIP      = true;
+    settings.port    = 5433;
+    ensureDatabases  = [ "pnp" ];
+    settings         = { ssl = true; };
+    authentication   = lib.mkOverride 10 ''
+      local all       all                trust
+      hostssl all     tobi     0.0.0.0/0   scram-sha-256
+      hostssl all     tobi     ::/0        scram-sha-256
+      hostssl all     steffen     0.0.0.0/0   scram-sha-256
+      hostssl all     steffen     ::/0        scram-sha-256
+      hostssl all     postgres      0.0.0.0/0   scram-sha-256
+      hostssl all     postgres      ::/0        scram-sha-256
+      hostssl pnp all  0.0.0.0/0   scram-sha-256
+      hostssl pnp all  ::/0        scram-sha-256
+    '';
+  };
+
+  networking.firewall.allowedTCPPorts = [ 5432 5533 ];
   users.users.postgres.extraGroups      = [ "nginx" ];
 }
 
