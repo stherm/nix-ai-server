@@ -106,7 +106,7 @@ in
         };
       }
       {
-        name = "peter";
+        name = "prosinsky";
         ensureClauses = {
           login = true;
           superuser = true;
