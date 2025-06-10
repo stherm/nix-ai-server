@@ -87,6 +87,10 @@ in
       "fw_grafschaft"
       "pnp"
     ];
+    ensureDBOwners = {
+      "pnp" = "pnp";
+      #"fw_grafschaft" = "fw_grafschaft";
+    };
     settings = {
       ssl = true;
     };
