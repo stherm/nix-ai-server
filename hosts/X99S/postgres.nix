@@ -116,8 +116,8 @@ in
         name = "pnp";
         ensureClauses = {
           login = true;
-          ensureDBOwnership = true;
         };
+        ensureDBOwnership = true;
       }
       {
         name = "fw_grafschaft";
