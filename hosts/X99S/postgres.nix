@@ -87,7 +87,7 @@ in
       "fw_grafschaft"
       "pnp"
     ];
-    ensureDBOwners = {
+    ensureDBOwnership = {
       "pnp" = "pnp";
       #"fw_grafschaft" = "fw_grafschaft";
     };
