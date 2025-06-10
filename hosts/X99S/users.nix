@@ -5,21 +5,18 @@
 
   normalUsers = {
     steffen = {
-      name = "steffen";
       extraGroups = [
         "wheel"
       ];
       sshKeyFiles = [ ../../users/steffen/pubkeys/X670E.pub ];
     };
     sid = {
-      name = "sid";
       extraGroups = [
         "wheel"
       ];
       sshKeyFiles = [ ../../users/sid/pubkeys/gpg.pub ];
     };
     susagi = {
-      name = "susagi";
       extraGroups = [
         "wheel"
       ];
@@ -27,14 +24,12 @@
     };
 
     tobi = {
-      name = "tobi";
       extraGroups = [
         "wheel"
       ];
       sshKeyFiles = [ ../../users/tobi/pubkeys/DESKTOP-I3MIIHU.pub ];
     };
     peter = {
-      name = "peter";
       extraGroups = [
         "wheel"
       ];
