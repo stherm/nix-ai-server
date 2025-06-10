@@ -86,6 +86,7 @@ in
     ensureDatabases = [
       "fw_grafschaft"
       "pnp"
+      "testuser"
     ];
     settings = {
       ssl = true;
@@ -120,6 +121,13 @@ in
         ensureDBOwnership = true;
       }
       {
+        name = "testuser";
+        ensureClauses = {
+          login = true;
+        };
+        ensureDBOwnership = true;
+      }
+      {
         name = "fw_grafschaft";
         ensureClauses = {
           login = true;
@@ -143,6 +151,16 @@ in
       hostssl pnp     postgres      ::/0        scram-sha-256
       hostssl pnp     pnp      0.0.0.0/0        scram-sha-256
       hostssl pnp     pnp      ::/0        scram-sha-256
+
+      # Zugriffe für testuser
+      hostssl testuser    tobi          0.0.0.0/0   scram-sha-256
+      hostssl testuser    tobi          ::/0        scram-sha-256
+      hostssl testuser    steffen       0.0.0.0/0   scram-sha-256
+      hostssl testuser    steffen       ::/0        scram-sha-256
+      hostssl testuser    postgres      0.0.0.0/0   scram-sha-256
+      hostssl testuser    postgres      ::/0        scram-sha-256
+      hostssl testuser    testuser      0.0.0.0/0        scram-sha-256
+      hostssl testuser    testuser      ::/0        scram-sha-256
     '';
   };
   networking.firewall.allowedTCPPorts = [ 5432 ];
