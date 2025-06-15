@@ -130,7 +130,7 @@ in
       {
         name = "fw_grafschaft";
         ensureClauses = {
-          login = true;
+          login = false;
         };
       }
     ];
@@ -141,8 +141,8 @@ in
       hostssl fw_grafschaft prosinsky     ::/0        scram-sha-256
       hostssl fw_grafschaft postgres      0.0.0.0/0   scram-sha-256
       hostssl fw_grafschaft postgres      ::/0        scram-sha-256
-      hostssl fw_grafschaft fw_grafschaft 0.0.0.0/0   scram-sha-256
-      hostssl fw_grafschaft fw_grafschaft ::/0        scram-sha-256
+      hostssl fw_grafschaft +fw_grafschaft 0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft +fw_grafschaft ::/0        scram-sha-256
 
       # Zugriffe für pnp
       hostssl pnp     tobi          0.0.0.0/0   scram-sha-256
