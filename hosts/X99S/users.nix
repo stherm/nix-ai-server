@@ -27,7 +27,10 @@
       extraGroups = [
         "wheel"
       ];
-      sshKeyFiles = [ ../../users/tobi/pubkeys/DESKTOP-I3MIIHU.pub ];
+      sshKeyFiles = [ 
+	../../users/tobi/pubkeys/DESKTOP-I3MIIHU.pub
+	../../users/tobi/pubkeys/test2.pub
+      ];
     };
     peter = {
       extraGroups = [

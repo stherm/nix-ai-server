@@ -132,7 +132,6 @@ in
         ensureClauses = {
           login = true;
         };
-        ensureDBOwnership = true;
       }
     ];
     authentication = lib.mkOverride 10 ''
@@ -142,6 +141,8 @@ in
       hostssl fw_grafschaft prosinsky     ::/0        scram-sha-256
       hostssl fw_grafschaft postgres      0.0.0.0/0   scram-sha-256
       hostssl fw_grafschaft postgres      ::/0        scram-sha-256
+      hostssl fw_grafschaft fw_grafschaft 0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft fw_grafschaft ::/0        scram-sha-256
 
       # Zugriffe für pnp
       hostssl pnp     tobi          0.0.0.0/0   scram-sha-256
