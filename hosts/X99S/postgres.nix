@@ -132,6 +132,7 @@ in
         ensureClauses = {
           login = true;
         };
+        ensureDBOwnership = true;
       }
     ];
     authentication = lib.mkOverride 10 ''
