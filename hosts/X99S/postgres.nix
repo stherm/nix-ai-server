@@ -1,18 +1,26 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   pgDataDir = "/var/lib/postgresql/${config.services.postgresql.package.psqlSchema}";
-  domain   = config.networking.domain;
+  domain = config.networking.domain;
   hostname = config.networking.hostName;
-  fqdn     = "${hostname}.${domain}";
+  fqdn = "${hostname}.${domain}";
 in
 {
   systemd.services.postgresql-cert-generator = {
     description = "PostgreSQL Certificate Generator";
-    wantedBy    = [ "postgresql.service" ];
-    after       = [ "postgresql.service" ];
-    path        = with pkgs; [ openssl coreutils ];
-    script      = ''
+    wantedBy = [ "postgresql.service" ];
+    after = [ "postgresql.service" ];
+    path = with pkgs; [
+      openssl
+      coreutils
+    ];
+    script = ''
       CERT_FILE="${pgDataDir}/server.crt"
       KEY_FILE="${pgDataDir}/server.key"
       NEEDS_NEW=0
@@ -46,34 +54,117 @@ in
   };
 
   systemd.timers.postgresql-cert-generator = {
-    wantedBy    = [ "timers.target" ];
+    wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar         = "monthly";
-      Persistent         = true;
+      OnCalendar = "monthly";
+      Persistent = true;
       RandomizedDelaySec = "12h";
     };
   };
 
-  services.postgresql = {
-    enable           = true;
-    package          = pkgs.postgresql_16;
-    dataDir          = "/var/lib/postgresql/16";
-    enableTCPIP      = true;
-    settings.port    = 5432;
-    ensureDatabases  = [ "fw_grafschaft" ];
-    settings         = { ssl = true; };
-    authentication   = lib.mkOverride 10 ''
-      local all       all                trust
-      hostssl all     prosinsky     0.0.0.0/0   scram-sha-256
-      hostssl all     prosinsky     ::/0        scram-sha-256
-      hostssl all     postgres      0.0.0.0/0   scram-sha-256
-      hostssl all     postgres      ::/0        scram-sha-256
-      hostssl fw_grafschaft all  0.0.0.0/0   scram-sha-256
-      hostssl fw_grafschaft all  ::/0        scram-sha-256
-    '';
+  services.pgadmin = {
+    enable = true;
+    initialEmail = "steffen@portuus.de";
+    initialPasswordFile = "/home/steffen/pgpass";
   };
 
-  networking.firewall.allowedTCPPorts = [ 5432 ];
-  users.users.postgres.extraGroups      = [ "nginx" ];
-}
+  services.nginx.virtualHosts."sql.steffen.fail" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://localhost:5050";
+      proxyWebsockets = true;
+    };
+  };
 
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_16;
+    dataDir = "/var/lib/postgresql/16";
+    enableTCPIP = true;
+    settings.port = 5432;
+    ensureDatabases = [
+      "fw_grafschaft"
+      "pnp"
+      "testuser"
+    ];
+    settings = {
+      ssl = true;
+    };
+    ensureUsers = [
+      {
+        name = "tobi";
+        ensureClauses = {
+          login = true;
+          superuser = true;
+        };
+      }
+      {
+        name = "steffen";
+        ensureClauses = {
+          login = true;
+          superuser = true;
+        };
+      }
+      {
+        name = "prosinsky";
+        ensureClauses = {
+          login = true;
+          superuser = true;
+        };
+      }
+      {
+        name = "pnp";
+        ensureClauses = {
+          login = true;
+        };
+        ensureDBOwnership = true;
+      }
+      {
+        name = "testuser";
+        ensureClauses = {
+          login = true;
+        };
+        ensureDBOwnership = true;
+      }
+      {
+        name = "fw_grafschaft";
+        ensureClauses = {
+          login = false;
+        };
+      }
+    ];
+    authentication = lib.mkOverride 10 ''
+      local all       all                trust
+      # Zugriffe für fw_grafschaft
+      hostssl fw_grafschaft prosinsky     0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft prosinsky     ::/0        scram-sha-256
+      hostssl fw_grafschaft postgres      0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft postgres      ::/0        scram-sha-256
+      hostssl fw_grafschaft +fw_grafschaft 0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft +fw_grafschaft ::/0        scram-sha-256
+
+      # Zugriffe für pnp
+      hostssl pnp     tobi          0.0.0.0/0   scram-sha-256
+      hostssl pnp     tobi          ::/0        scram-sha-256
+      hostssl pnp     steffen       0.0.0.0/0   scram-sha-256
+      hostssl pnp     steffen       ::/0        scram-sha-256
+      hostssl pnp     postgres      0.0.0.0/0   scram-sha-256
+      hostssl pnp     postgres      ::/0        scram-sha-256
+      hostssl pnp     pnp      0.0.0.0/0        scram-sha-256
+      hostssl pnp     pnp      ::/0        scram-sha-256
+
+      # Zugriffe für testuser
+      hostssl testuser    tobi          0.0.0.0/0   scram-sha-256
+      hostssl testuser    tobi          ::/0        scram-sha-256
+      hostssl testuser    steffen       0.0.0.0/0   scram-sha-256
+      hostssl testuser    steffen       ::/0        scram-sha-256
+      hostssl testuser    postgres      0.0.0.0/0   scram-sha-256
+      hostssl testuser    postgres      ::/0        scram-sha-256
+      hostssl testuser    testuser      0.0.0.0/0        scram-sha-256
+      hostssl testuser    testuser      ::/0        scram-sha-256
+    '';
+  };
+  networking.firewall.allowedTCPPorts = [ 5432 ];
+  users.users.postgres.extraGroups = [ "nginx" ];
+}

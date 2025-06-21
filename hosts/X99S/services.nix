@@ -19,7 +19,7 @@
     nginx.enable = true;
 
     ollama = {
-      enable = true;
+      enable = false;
       loadModels = [
         "mistral:7b"
         "deepseek-r1:14b"

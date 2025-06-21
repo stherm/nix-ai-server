@@ -4,22 +4,26 @@
   imports = [ inputs.core.nixosModules.normalUsers ];
 
   normalUsers = {
+    hm = {
+      sshKeyFiles = [ 
+	../../users/hm/pubkeys/PC21-LK-2025.pub
+	../../users/hm/pubkeys/PC-1925-02.pub
+	../../users/hm/pubkeys/PC15-IK-2024.pub
+      ];
+    };
     steffen = {
-      name = "steffen";
       extraGroups = [
         "wheel"
       ];
       sshKeyFiles = [ ../../users/steffen/pubkeys/X670E.pub ];
     };
     sid = {
-      name = "sid";
       extraGroups = [
         "wheel"
       ];
       sshKeyFiles = [ ../../users/sid/pubkeys/gpg.pub ];
     };
     susagi = {
-      name = "susagi";
       extraGroups = [
         "wheel"
       ];
@@ -27,14 +31,15 @@
     };
 
     tobi = {
-      name = "tobi";
       extraGroups = [
         "wheel"
       ];
-      sshKeyFiles = [ ../../users/tobi/pubkeys/DESKTOP-I3MIIHU.pub ];
+      sshKeyFiles = [ 
+	../../users/tobi/pubkeys/DESKTOP-I3MIIHU.pub
+	../../users/tobi/pubkeys/test2.pub
+      ];
     };
     peter = {
-      name = "peter";
       extraGroups = [
         "wheel"
       ];
