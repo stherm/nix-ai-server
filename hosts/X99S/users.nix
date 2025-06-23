@@ -15,7 +15,10 @@
       extraGroups = [
         "wheel"
       ];
-      sshKeyFiles = [ ../../users/steffen/pubkeys/X670E.pub ];
+      sshKeyFiles = [
+      	../../users/steffen/pubkeys/X670E.pub 
+      	../../users/steffen/pubkeys/PC-1925-01.pub
+      ];
     };
     sid = {
       extraGroups = [
