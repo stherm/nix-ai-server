@@ -30,7 +30,7 @@
       extraGroups = [
         "wheel"
       ];
-      sshKeyFiles = [ ../../users/susagi/pubkeys/vde_rsa.pub ];
+      sshKeyFiles = [ ../../users/susagi/pubkeys/thinkpad_rsa.pub ];
     };
 
     tobi = {
