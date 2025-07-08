@@ -12,7 +12,7 @@
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.ollama
-    #outputs.nixosModules.open-webui-oci
+    outputs.nixosModules.open-webui-oci
   ];
 
   services = {
@@ -29,8 +29,8 @@
     };
 
     open-webui = {
-      # enable = true;
-      # package = pkgs.stable.open-webui;
+      enable = true;
+      #package = pkgs.stable.open-webui;
     };
   };
   

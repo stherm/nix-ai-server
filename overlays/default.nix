@@ -18,6 +18,23 @@
     };
   };
 
+  # fuck u openwebui and your python runtime tests!
+  patch-sentence-transformers = final: prev:
+    let
+      pkgs           = final;
+      pythonPackages = pkgs.python3Packages;
+    in {
+      python3Packages = pythonPackages.override {
+        packageOverrides = self: super: {
+          sentence-transformers = super.sentence-transformers.overridePythonAttrs (
+            old: {
+              doCheck = false;
+            }
+          );
+        };
+      };
+    };
+
   # old-stable nixpkgs accessible through 'pkgs.old'
   old-stable-packages = final: prev: {
     old = import inputs.nixpkgs-old-stable {
