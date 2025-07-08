@@ -28,6 +28,12 @@
       ];
     };
 
+    systemd.services."ollama-model-loader" = {
+      serviceConfig.ExecStartPre = ''
+        ${pkgs.coreutils}/bin/mkdir -p /var/lib/ollama/models/manifests
+      '';
+    };
+
     open-webui = {
       # enable = true;
       # package = pkgs.stable.open-webui;
