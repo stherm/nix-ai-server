@@ -12,14 +12,14 @@
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.ollama
-    # outputs.nixosModules.open-webui-oci
+    #outputs.nixosModules.open-webui-oci
   ];
 
   services = {
     nginx.enable = true;
 
     ollama = {
-      enable = false;
+      enable = true;
       loadModels = [
         "mistral:7b"
         "deepseek-r1:14b"
