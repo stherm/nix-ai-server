@@ -8,10 +8,10 @@
 {
   imports = [
     inputs.core.nixosModules.nginx
+    inputs.core.nixosModules.ollama
     # inputs.core.nixosModules.open-webui
     inputs.core.nixosModules.openssh
 
-    outputs.nixosModules.ollama
     # outputs.nixosModules.open-webui-oci
   ];
 

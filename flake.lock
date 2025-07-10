@@ -11,11 +11,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1751987471,
-        "narHash": "sha256-K6ZjL3sh/Z/wR4i/7rZJlCZomtxwgbeQEK4HMcHuEF8=",
+        "lastModified": 1752159650,
+        "narHash": "sha256-Qpe3TlQ/WoX5nT+7NVWGwgA5GcsY84RctS9l/k8zt6M=",
         "owner": "sid115",
         "repo": "nix-core",
-        "rev": "2861d12e94bdc4435bee69f397b0b1be34613a04",
+        "rev": "fa3d6ebb8254aa44ee3bc84b4a28f1ab971f9316",
         "type": "github"
       },
       "original": {
