@@ -35,13 +35,16 @@ in
     services.nginx.virtualHosts."${fqdn}" = {
       forceSSL = cfg.forceSSL;
       enableACME = cfg.forceSSL;
-      locations."/".proxyPass = mkDefault "http://localhost:${toString cfg.port}";
+      locations."/" = {
+        proxyPass = mkDefault "http://localhost:${toString cfg.port}";
+        proxyWebsockets = mkDefault true;
+      };
     };
 
     security.acme.certs."${fqdn}".postRun = mkIf cfg.forceSSL "systemctl restart ollama.service";
 
     systemd.tmpfiles.rules = [
-      "d ${cfg.models} 0755 ${cfg.user} ${cfg.group} -"
+      "d ${cfg.home} 0755 ${cfg.user} ${cfg.group} -"
     ];
   };
 }
