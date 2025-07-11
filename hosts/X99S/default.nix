@@ -12,6 +12,7 @@
 
     ./boot.nix
     ./hardware.nix
+    ./nixified-ai.nix
     ./packages.nix
     ./postgres.nix
     ./services.nix

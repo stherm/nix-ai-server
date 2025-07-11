@@ -7,6 +7,9 @@
     core.url = "github:sid115/nix-core/develop";
     # core.url = "github:stherm/nix-core/develop";
     core.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixified-ai.url = "github:nixified-ai/flake";
+    nixified-ai.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
