@@ -21,9 +21,11 @@
     ollama = {
       enable = true;
       loadModels = [
-        "mistral:7b"
         "deepseek-r1:14b"
         "gemma3:12b"
+        "gemma3:27b"
+        "gemma3:27b-it-qat"
+        "mistral:7b"
         "qwen3:14b"
       ];
     };
