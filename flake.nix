@@ -19,11 +19,29 @@
       inherit (self) outputs;
       supportedSystems = [
         "x86_64-linux"
-        "aarch64-linux"
       ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
+      apps = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = self.apps.${system}.rebuild;
+          rebuild = {
+            type = "app";
+            program =
+              let
+                pkg = pkgs.callPackage ./apps/rebuild { };
+              in
+              "${pkg}/bin/rebuild";
+            meta.description = "Rebuild NixOS configuration for X99S.";
+          };
+        }
+      );
+
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
       overlays = import ./overlays { inherit inputs; };
