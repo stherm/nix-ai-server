@@ -7,6 +7,7 @@
 {
   imports = [
     inputs.core.nixosModules.common
+    inputs.core.nixosModules.sops
 
     outputs.nixosModules.common
 

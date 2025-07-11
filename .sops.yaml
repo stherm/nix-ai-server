@@ -1,0 +1,11 @@
+keys:
+  - &host_x99s age1486n6aeqesq4xr8ayf6g8up2wtcw7glwk62t0nw066u65p5jx9msxx8n56
+  - &user_sid age19yeqvv28fgrtk6jsh3xyaf0lch86kna6rcz4dwe962yyyyevu30sx474xy
+  - &user_steffen age1e8p35795htf7twrejyugpzw0qja2v33awcw76y4gp6acnxnkzq0s935t4t
+creation_rules:
+  - path_regex: hosts/X99S/secrets.yaml$
+    key_groups:
+    - age:
+      - *host_x99s
+      - *user_sid
+      - *user_steffen
