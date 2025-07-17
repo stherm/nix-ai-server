@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  config,
   pkgs,
   ...
 }:
@@ -16,7 +17,12 @@
   ];
 
   services = {
-    nginx.enable = true;
+    nginx = {
+      enable = true;
+      virtualHosts."ollama.steffen.fail" = {
+        # basicAuthFile = config.sops.secrets."ollama/basic-auth".path; # TODO: replace with bearer token auth  via authelia
+      };
+    };
 
     ollama = {
       enable = true;
@@ -36,4 +42,16 @@
     };
   };
 
+  # Generate secrets with: nix-shell -p apacheHttpd --run 'htpasswd -B -n USERNAME'
+  sops =
+    let
+      owner = "nginx";
+      group = "nginx";
+      mode = "0440";
+    in
+    {
+      secrets."ollama/basic-auth" = {
+        inherit owner group mode;
+      };
+    };
 }
