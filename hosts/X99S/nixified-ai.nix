@@ -22,14 +22,11 @@
     package = inputs.nixified-ai.packages.${pkgs.system}.comfyui-nvidia; # package in overlay?
     user = "comfyui";
     group = "comfyui";
-    host = "0.0.0.0";
-    # FIXME: does not build
-    #   > Warning: HF_TOKEN is set, but fetching didn't seem to work, check your token!
-    #   > Warning: CIVITAI_API_TOKEN is set, but fetching didn't seem to work, check your token!
-    # models = builtins.attrValues pkgs.nixified-ai.models;
+    host = "127.0.0.1";
+    port = 8189;
     customNodes = with pkgs.comfyuiPackages; [
       comfyui-gguf
-      # comfyui-impact-pack # does not build
+      comfyui-impact-pack
     ];
   };
 

@@ -8,7 +8,7 @@
     # core.url = "github:stherm/nix-core/develop";
     core.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixified-ai.url = "github:nixified-ai/flake";
+    nixified-ai.url = "github:nixified-ai/flake/7a8f51cd7d9ff54166f38e64522a02309454e773";
     nixified-ai.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
