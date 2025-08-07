@@ -87,6 +87,7 @@ in
       "fw_grafschaft"
       "pnp"
       "testuser"
+      "testmaster"
     ];
     settings = {
       ssl = true;
@@ -121,6 +122,13 @@ in
         ensureDBOwnership = true;
       }
       {
+        name = "testmaster";
+        ensureClauses = {
+          login = true;
+        };
+        ensureDBOwnership = true;
+      }
+      {
         name = "testuser";
         ensureClauses = {
           login = true;
@@ -137,10 +145,10 @@ in
     authentication = lib.mkOverride 10 ''
       local all       all                trust
       # Zugriffe für fw_grafschaft
-      hostssl fw_grafschaft prosinsky     0.0.0.0/0   scram-sha-256
-      hostssl fw_grafschaft prosinsky     ::/0        scram-sha-256
-      hostssl fw_grafschaft postgres      0.0.0.0/0   scram-sha-256
-      hostssl fw_grafschaft postgres      ::/0        scram-sha-256
+      hostssl fw_grafschaft prosinsky      0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft prosinsky      ::/0        scram-sha-256
+      hostssl fw_grafschaft postgres       0.0.0.0/0   scram-sha-256
+      hostssl fw_grafschaft postgres       ::/0        scram-sha-256
       hostssl fw_grafschaft +fw_grafschaft 0.0.0.0/0   scram-sha-256
       hostssl fw_grafschaft +fw_grafschaft ::/0        scram-sha-256
 
@@ -151,8 +159,8 @@ in
       hostssl pnp     steffen       ::/0        scram-sha-256
       hostssl pnp     postgres      0.0.0.0/0   scram-sha-256
       hostssl pnp     postgres      ::/0        scram-sha-256
-      hostssl pnp     pnp      0.0.0.0/0        scram-sha-256
-      hostssl pnp     pnp      ::/0        scram-sha-256
+      hostssl pnp     pnp           0.0.0.0/0        scram-sha-256
+      hostssl pnp     pnp           ::/0        scram-sha-256
 
       # Zugriffe für testuser
       hostssl testuser    tobi          0.0.0.0/0   scram-sha-256
@@ -161,8 +169,18 @@ in
       hostssl testuser    steffen       ::/0        scram-sha-256
       hostssl testuser    postgres      0.0.0.0/0   scram-sha-256
       hostssl testuser    postgres      ::/0        scram-sha-256
-      hostssl testuser    testuser      0.0.0.0/0        scram-sha-256
+      hostssl testuser    testuser      0.0.0.0/0   scram-sha-256
       hostssl testuser    testuser      ::/0        scram-sha-256
+
+      # Zugriffe für testmaster
+      hostssl testmaster    tobi          0.0.0.0/0   scram-sha-256
+      hostssl testmaster    tobi          ::/0        scram-sha-256
+      hostssl testmaster    steffen       0.0.0.0/0   scram-sha-256
+      hostssl testmaster    steffen       ::/0        scram-sha-256
+      hostssl testmaster    postgres      0.0.0.0/0   scram-sha-256
+      hostssl testmaster    postgres      ::/0        scram-sha-256
+      hostssl testmaster    testuser      0.0.0.0/0   scram-sha-256
+      hostssl testmaster    testuser      ::/0        scram-sha-256
     '';
   };
   networking.firewall.allowedTCPPorts = [ 5432 ];
