@@ -179,8 +179,8 @@ in
       hostssl testmaster    steffen       ::/0        scram-sha-256
       hostssl testmaster    postgres      0.0.0.0/0   scram-sha-256
       hostssl testmaster    postgres      ::/0        scram-sha-256
-      hostssl testmaster    testuser      0.0.0.0/0   scram-sha-256
-      hostssl testmaster    testuser      ::/0        scram-sha-256
+      hostssl testmaster    testmaster    0.0.0.0/0   scram-sha-256
+      hostssl testmaster    testmaster    ::/0        scram-sha-256
     '';
   };
   networking.firewall.allowedTCPPorts = [ 5432 ];
