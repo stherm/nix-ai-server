@@ -11,6 +11,15 @@
         ../../users/hm/pubkeys/PC15-IK-2024.pub
       ];
     };
+    lydia = {
+      extraGroups = [
+        "wheel"
+      ];
+      sshKeyFiles = [
+        ../../users/lydia/pubkeys/PC21-LK-2025.pub
+        ../../users/lydia/pubkeys/LydiaLenovo.pub
+      ];
+    };
     steffen = {
       extraGroups = [
         "wheel"
