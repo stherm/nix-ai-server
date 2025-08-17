@@ -6,7 +6,6 @@
   normalUsers = {
     hm = {
       sshKeyFiles = [
-        ../../users/hm/pubkeys/PC21-LK-2025.pub
         ../../users/hm/pubkeys/PC-1925-02.pub
         ../../users/hm/pubkeys/PC15-IK-2024.pub
       ];
