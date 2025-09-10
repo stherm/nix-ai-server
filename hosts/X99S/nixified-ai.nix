@@ -23,7 +23,7 @@
     user = "comfyui";
     group = "comfyui";
     host = "127.0.0.1";
-    port = 8189;
+    port = 8187;
     customNodes = with pkgs.comfyuiPackages; [
       comfyui-gguf
       comfyui-impact-pack
