@@ -18,14 +18,14 @@
 
   services = {
     nginx = {
-      enable = true;
+      enable = false;
       virtualHosts."ollama.steffen.fail" = {
         # basicAuthFile = config.sops.secrets."ollama/basic-auth".path; # TODO: replace with bearer token auth  via authelia
       };
     };
 
     ollama = {
-      enable = true;
+      enable = false;
       loadModels = [
         "deepseek-r1:14b"
         "gemma3:12b"
@@ -44,15 +44,15 @@
   };
 
   # Generate secrets with: nix-shell -p apacheHttpd --run 'htpasswd -B -n USERNAME'
-  sops =
-    let
-      owner = "nginx";
-      group = "nginx";
-      mode = "0440";
-    in
-    {
-      secrets."ollama/basic-auth" = {
-        inherit owner group mode;
-      };
-    };
+  #sops =
+  # let
+  #    owner = "nginx";
+  #    group = "nginx";
+  #    mode = "0440";
+  #  in
+  #  {
+  #    secrets."ollama/basic-auth" = {
+  #      inherit owner group mode;
+  #    };
+  #  };
 }
