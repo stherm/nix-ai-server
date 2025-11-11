@@ -17,12 +17,12 @@
   ];
 
   services = {
-    nginx = {
-      enable = false;
-      virtualHosts."ollama.steffen.fail" = {
+  #  nginx = {
+  #    enable = false;
+  #    virtualHosts."ollama.steffen.fail" = {
         # basicAuthFile = config.sops.secrets."ollama/basic-auth".path; # TODO: replace with bearer token auth  via authelia
-      };
-    };
+  #    };
+  #  };
 
     ollama = {
       enable = false;

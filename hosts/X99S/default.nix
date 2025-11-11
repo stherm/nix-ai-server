@@ -13,6 +13,7 @@
 
     ./boot.nix
     ./hardware.nix
+    ./headscale.nix
     #./nixified-ai.nix
     ./packages.nix
     ./postgres.nix
