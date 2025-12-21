@@ -19,7 +19,7 @@
 
   services.comfyui = {
     enable = true;
-    package = inputs.nixified-ai.packages.${pkgs.system}.comfyui-nvidia; # package in overlay?
+    package = inputs.nixified-ai.packages.${pkgs.system}.comfyui-nvidia;
     user = "comfyui";
     group = "comfyui";
     host = "127.0.0.1";
@@ -33,6 +33,9 @@
   systemd.services.nix-daemon.serviceConfig = {
     EnvironmentFile = config.sops.templates."comfyui".path;
   };
+
+  users.users.comfyui.group = "comfyui";
+  users.groups.comfyui = { };
 
   sops =
     let

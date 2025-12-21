@@ -10,19 +10,16 @@
   imports = [
     inputs.core.nixosModules.nginx
     inputs.core.nixosModules.ollama
-    # inputs.core.nixosModules.open-webui
     inputs.core.nixosModules.openssh
 
-    # outputs.nixosModules.open-webui-oci
   ];
 
   services = {
-  #  nginx = {
-  #    enable = false;
-  #    virtualHosts."ollama.steffen.fail" = {
-        # basicAuthFile = config.sops.secrets."ollama/basic-auth".path; # TODO: replace with bearer token auth  via authelia
-  #    };
-  #  };
+    #  nginx = {
+    #    enable = false;
+    #    virtualHosts."ollama.steffen.fail" = {
+    # basicAuthFile = config.sops.secrets."ollama/basic-auth".path; # TODO: replace with bearer token auth  via authelia
+    #    };
 
     ollama = {
       enable = false;
@@ -35,11 +32,6 @@
         "mistral:7b"
         "qwen3:14b"
       ];
-    };
-
-    open-webui = {
-      # enable = true; # FIXME: rapidocr-onnxruntime-1.4.4 fails to build with exit code 134
-      package = pkgs.stable.open-webui;
     };
   };
 

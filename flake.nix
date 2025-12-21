@@ -1,14 +1,14 @@
 {
   inputs = {
-    nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-old-old-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
-    core.url = "github:sid115/nix-core/develop";
-    # core.url = "github:stherm/nix-core/develop";
+    core.url = "github:sid115/nix-core";
     core.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixified-ai.url = "github:nixified-ai/flake/7a8f51cd7d9ff54166f38e64522a02309454e773";
+    nixified-ai.url = "github:nixified-ai/flake";
     nixified-ai.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
