@@ -7,9 +7,14 @@ let
   vHosts =
     let
       domain = "synapse-test.ovh";
-      X99S = "100.64.0.x";
+      X99S = "100.64.0.3";
     in
     [
+      {
+        fqdn = "git." + domain;
+        host = X99S;
+        port = "3000";
+      }
     ];
 
   mkVHost = host: port: {
