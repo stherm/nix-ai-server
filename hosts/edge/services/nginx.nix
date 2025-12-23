@@ -15,6 +15,12 @@ let
         host = X99S;
         port = "3001";
       }
+
+      {
+        fqdn = "share." + domain;
+        host = X99S;
+        port = "3002";
+      }
     ];
 
   mkVHost = host: port: {

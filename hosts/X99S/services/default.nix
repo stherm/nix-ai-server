@@ -5,6 +5,7 @@
     ./comfyui-docker.nix
     ./gitea.nix
     ./github-runners.nix
+    ./jirafeau.nix
     ./nginx.nix
     ./ollama.nix
     ./openssh.nix
