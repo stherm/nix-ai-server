@@ -13,7 +13,10 @@
       serverName = "share.synapse-test.ovh";
 
       listen = [
-        { addr = "100.64.0.3"; port = 3002; }
+        {
+          addr = "100.64.0.3";
+          port = 3002;
+        }
       ];
     };
   };
