@@ -1,23 +1,25 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 
+let
+  cfg = config.services.jirafeau;
+  tailnet = builtins.fromJSON (builtins.readFile ../../../tailnet.json);
+  fqdn = cfg.reverseProxy.subdomain + "." + tailnet.hosts.edge.publicDomain;
+
+  utils = import ../../../lib/utils.nix;
+in
 {
   imports = [ inputs.core.nixosModules.jirafeau ];
 
   services.jirafeau = {
     enable = true;
-    dataDir = "/data/jirafeau";
-    nginxConfig = {
-      enableACME = false;
+    reverseProxy = {
+      enable = true;
+      subdomain = "share";
       forceSSL = false;
-
-      serverName = "share.synapse-test.ovh";
-
-      listen = [
-        {
-          addr = "100.64.0.3";
-          port = 3002;
-        }
-      ];
     };
   };
+
+  services.nginx.virtualHosts."${fqdn}" =
+    utils.mkInternalReverseProxy
+      tailnet.hosts."${config.networking.hostName}".address;
 }

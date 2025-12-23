@@ -4,22 +4,21 @@
 }:
 
 let
+  tailnet = builtins.fromJSON (builtins.readFile ../../../tailnet.json);
+
   vHosts =
     let
-      domain = "synapse-test.ovh";
-      X99S = "100.64.0.3";
+      domain = tailnet.hosts.edge.publicDomain;
+      X99S = tailnet.hosts.X99S.address;
     in
     [
       {
         fqdn = "git." + domain;
         host = X99S;
-        port = "3001";
       }
-
       {
         fqdn = "share." + domain;
         host = X99S;
-        port = "3002";
       }
     ];
 
@@ -27,7 +26,8 @@ let
     enableACME = true;
     forceSSL = true;
     locations."/" = {
-      proxyPass = "http://${host}:${port}";
+      proxyPass = "http://${host}:80";
+      proxyWebsockets = true;
     };
   };
 
