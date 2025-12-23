@@ -10,6 +10,6 @@
 
     # ./nixified-ai.nix
 
-    # outputs.nixosModules.tailscale
+    outputs.nixosModules.tailscale
   ];
 }

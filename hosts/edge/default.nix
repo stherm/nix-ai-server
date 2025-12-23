@@ -14,7 +14,7 @@
     ./hardware.nix
     ./networking.nix
     ./packages.nix
-    # ./secrets
+    ./secrets
     ./services
     ./users.nix
   ];

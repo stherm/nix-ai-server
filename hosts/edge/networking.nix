@@ -1,4 +1,4 @@
 {
   networking.hostName = "edge";
-  networking.domain = "portuus.de";
+  networking.domain = "synapse-test.ovh";
 }
