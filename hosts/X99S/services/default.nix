@@ -4,7 +4,7 @@
   imports = [
     ./comfyui-docker.nix
     ./gitea.nix
-    # ./github-runners.nix
+    ./github-runners.nix
     ./nginx.nix
     ./ollama.nix
     ./openssh.nix

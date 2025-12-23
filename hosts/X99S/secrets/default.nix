@@ -5,5 +5,5 @@
 
   sops.defaultSopsFile = ./secrets.yaml; # HOTFIX
 
-  # sops.secrets."github-runners/nix-ai-server/token" = { };
+  sops.secrets."github-runners/nix-ai-server/token" = { };
 }
