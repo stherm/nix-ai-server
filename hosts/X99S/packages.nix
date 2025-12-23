@@ -2,11 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
-    #core.marker-pdf
     dotnetCorePackages.dotnet_8.runtime
     dotnetCorePackages.sdk_8_0_3xx
     gh
     gitingest
     tmux
+
+    # core.marker-pdf
   ];
 }

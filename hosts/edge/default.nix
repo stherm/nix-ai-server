@@ -12,11 +12,12 @@
 
     ./boot.nix
     ./hardware.nix
+    ./networking.nix
     ./packages.nix
-    ./secrets
+    # ./secrets
     ./services
     ./users.nix
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 }
