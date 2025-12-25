@@ -16,7 +16,6 @@ in
       subdomain = "share";
       forceSSL = false;
     };
-    
 
     nginxConfig = {
       enableACME = false;
@@ -33,4 +32,3 @@ in
   };
 
 }
-
