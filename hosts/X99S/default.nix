@@ -12,6 +12,7 @@
 
     ./boot.nix
     ./hardware.nix
+    ./networking.nix
     ./packages.nix
     ./secrets
     ./services
