@@ -25,16 +25,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1766712367,
-        "narHash": "sha256-v68MniwdKz7C2DyQim0f1arNcta+Zfz79x39q/LuO1g=",
+        "lastModified": 1766749965,
+        "narHash": "sha256-YgdJZxmvyzN5jKIg1U4sHP2Z2LqqNqrqIWFf8rhPORE=",
         "owner": "sid115",
         "repo": "nix-core",
-        "rev": "caf5e6ca66b8278ace1b2534200ea34d5d538a32",
+        "rev": "47694fd7f8533d592ab86688b56ee7664411b524",
         "type": "github"
       },
       "original": {
         "owner": "sid115",
-        "ref": "release-25.11",
+        "ref": "backport/mailserver-overhaul",
         "repo": "nix-core",
         "type": "github"
       }
