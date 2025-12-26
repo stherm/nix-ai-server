@@ -8,7 +8,9 @@ in
 
   services.nginx = {
     enable = true;
-    # forceSSL = false; # steffen.fail needs SSL
+    forceSSL = true; # steffen.fail
+    openFirewall = true; # steffen.fail
+    # synapse-test.ovh
     commonHttpConfig = ''
       set_real_ip_from ${tailnet.hosts.edge.address};
       real_ip_header X-Forwarded-For;

@@ -16,6 +16,10 @@ let
         fqdn = "git." + domain;
         host = X99S;
       }
+      # {
+      #   fqdn = "cloud." + domain;
+      #   host = X99S;
+      # }
       {
         fqdn = "share." + domain;
         host = X99S;
@@ -45,6 +49,8 @@ in
 
   services.nginx = {
     enable = true;
+    forceSSL = true;
+    openFirewall = true;
     virtualHosts = mkVHosts vHosts;
   };
 }
