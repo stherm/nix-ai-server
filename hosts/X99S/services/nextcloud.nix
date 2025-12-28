@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   pkgs,
   ...
@@ -28,7 +29,11 @@ in
   };
 
   services.nginx.virtualHosts."${fqdn}" = {
-    sslCertificate = mkForce "/dev/null";
-    sslCertificateKey = mkForce "/dev/null";
+    listen = [
+      {
+        addr = tailnet.hosts."${config.networking.hostName}".address;
+        port = 80;
+      }
+    ];
   };
 }

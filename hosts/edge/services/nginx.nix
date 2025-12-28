@@ -25,18 +25,21 @@ in
         fqdn = "cloud.${domain}";
         address = X99S;
         port = 80;
+        ssl = true;
       };
       "git.${domain}" = mkVirtualHost {
         inherit config;
         fqdn = "git.${domain}";
         address = X99S;
         port = 80;
+        ssl = true;
       };
       "share.${domain}" = mkVirtualHost {
         inherit config;
         fqdn = "share.${domain}";
         address = X99S;
         port = 80;
+        ssl = true;
       };
     };
   };
