@@ -1,4 +1,10 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   tailnet = builtins.fromJSON (builtins.readFile ../../../tailnet.json);
@@ -13,11 +19,21 @@ in
 
   services.nextcloud = {
     enable = true;
+    package = pkgs.nextcloud32;
     hostName = mkForce fqdn;
-    settings = {
-      mail_domain = domain;
-      mail_smtphost = "mail." + domain;
-      mail_smtpname = "nextcloud@" + domain;
+    reverseProxy = {
+      enable = true;
+      forceSSL = false;
+      inherit subdomain;
     };
+  };
+
+  services.nginx.virtualHosts."${fqdn}" = {
+    listen = [
+      {
+        addr = tailnet.hosts."${config.networking.hostName}".address;
+        port = 80;
+      }
+    ];
   };
 }

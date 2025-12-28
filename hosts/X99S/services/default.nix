@@ -6,7 +6,7 @@
     ./gitea.nix
     ./github-runners.nix
     ./jirafeau.nix
-    # ./nextcloud.nix
+    ./nextcloud.nix
     ./nginx.nix
     ./ollama.nix
     ./openssh.nix

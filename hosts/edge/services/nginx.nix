@@ -1,48 +1,16 @@
 {
   inputs,
+  config,
+  lib,
   ...
 }:
 
 let
   tailnet = builtins.fromJSON (builtins.readFile ../../../tailnet.json);
+  domain = tailnet.hosts.edge.publicDomain;
+  X99S = tailnet.hosts.X99S.address;
 
-  vHosts =
-    let
-      domain = tailnet.hosts.edge.publicDomain;
-      X99S = tailnet.hosts.X99S.address;
-    in
-    [
-      {
-        fqdn = "git." + domain;
-        host = X99S;
-      }
-      # {
-      #   fqdn = "cloud." + domain;
-      #   host = X99S;
-      # }
-      {
-        fqdn = "share." + domain;
-        host = X99S;
-      }
-    ];
-
-  mkVHost = host: port: {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://${host}:80";
-      proxyWebsockets = true;
-    };
-  };
-
-  mkVHosts =
-    vHosts:
-    builtins.listToAttrs (
-      map (vHost: {
-        name = vHost.fqdn;
-        value = mkVHost vHost.host vHost.port;
-      }) vHosts
-    );
+  inherit (lib.utils) mkVirtualHost;
 in
 {
   imports = [ inputs.core.nixosModules.nginx ];
@@ -51,6 +19,28 @@ in
     enable = true;
     forceSSL = true;
     openFirewall = true;
-    virtualHosts = mkVHosts vHosts;
+    virtualHosts = {
+      "cloud.${domain}" = mkVirtualHost {
+        inherit config;
+        fqdn = "cloud.${domain}";
+        address = X99S;
+        port = 80;
+        ssl = true;
+      };
+      "git.${domain}" = mkVirtualHost {
+        inherit config;
+        fqdn = "git.${domain}";
+        address = X99S;
+        port = 80;
+        ssl = true;
+      };
+      "share.${domain}" = mkVirtualHost {
+        inherit config;
+        fqdn = "share.${domain}";
+        address = X99S;
+        port = 80;
+        ssl = true;
+      };
+    };
   };
 }
