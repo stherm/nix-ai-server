@@ -4,8 +4,7 @@
     nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # core.url = "github:sid115/nix-core/release-25.11";
-    core.url = "github:sid115/nix-core/backport/mailserver-overhaul";
+    core.url = "github:sid115/nix-core/release-25.11";
     core.inputs.nixpkgs.follows = "nixpkgs";
 
     git-hooks.url = "github:cachix/git-hooks.nix";
