@@ -62,7 +62,6 @@
       nixosModules = import ./modules/nixos;
 
       nixosConfigurations = {
-        edge = mkNixosConfiguration "edge" "x86_64-linux";
         X99S = mkNixosConfiguration "X99S" "x86_64-linux";
       };
 

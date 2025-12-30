@@ -1,7 +1,0 @@
-{
-  "buildHost": "X99S",
-  "hosts": [
-    "edge",
-    "X99S"
-  ]
-}
