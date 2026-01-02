@@ -1,3 +1,3 @@
-# NixOS and Home Manager configurations
+# NixOS configurations for `steffen.fail`
 
-This repository is a collection of personal NixOS configurations with standalone Home Manager powered by [*nix-core*](https://github.com/sid115/nix-core).
+This repository is a collection of NixOS configurations powered by [*nix-core*](https://github.com/sid115/nix-core).

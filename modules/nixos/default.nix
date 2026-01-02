@@ -1,4 +1,4 @@
 {
+  comfyui-docker = import ./comfyui-docker;
   common = import ./common;
-  matrix-synapse = import ./matrix-synapse;
 }

@@ -15,6 +15,5 @@
     efi.canTouchEfiVariables = false;
 
     efi.efiSysMountPoint = "/boot";
-
   };
 }
