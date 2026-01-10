@@ -7,8 +7,8 @@
 
   sops.secrets."github-runners/nix-ai-server/token" = { };
 
-  sops.secrets."charbogen_user_creds" = { owner = "charbogen"; };
-  sops.secrets."charbogen_db_creds" = { owner = "charbogen"; };
-  sops.secrets."charbogen_db_uri" = { owner = "charbogen"; };
-  sops.secrets."charbogen_flask_secret" = { owner = "charbogen"; };
+  sops.secrets."charbogen/user_credentials" = { owner = "charbogen"; };
+  sops.secrets."charbogen/db_credentials" = { owner = "charbogen"; };
+  sops.secrets."charbogen/db_uri" = { owner = "charbogen"; };
+  sops.secrets."charbogen/flask_secret" = { owner = "charbogen"; };
 }

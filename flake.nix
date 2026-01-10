@@ -18,7 +18,7 @@
       owner = "pnp";
       repo = "charbogen";
       host = "git.portuus.de";
-      rev = "feature/nix_module";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
