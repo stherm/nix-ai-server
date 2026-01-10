@@ -3,7 +3,7 @@
 {
   services.charbogen = {
     enable = true;
-    port = 5000;
+    port = 6920;
     domain = "www.roll-dice.org";
 
     secretKeyFile = config.sops.secrets."charbogen_flask_secret".path;
@@ -13,9 +13,21 @@
   };
 
   sops.secrets = {
-    "charbogen_user_creds" = { owner = "charbogen"; key = "charbogen/user_credentials"; };
-    "charbogen_db_creds" = { owner = "charbogen"; key = "charbogen/db_credentials"; };
-    "charbogen_db_uri" = { owner = "charbogen"; key = "charbogen/db_uri"; };
-    "charbogen_flask_secret" = { owner = "charbogen"; key = "charbogen/flask_secret"; };
+    "charbogen_user_creds" = {
+      owner = "charbogen";
+      key = "charbogen/user_credentials";
+    };
+    "charbogen_db_creds" = {
+      owner = "charbogen";
+      key = "charbogen/db_credentials";
+    };
+    "charbogen_db_uri" = {
+      owner = "charbogen";
+      key = "charbogen/db_uri";
+    };
+    "charbogen_flask_secret" = {
+      owner = "charbogen";
+      key = "charbogen/flask_secret";
+    };
   };
 }
