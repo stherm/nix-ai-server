@@ -22,6 +22,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    website-ff = {
+      type = "gitlab";
+      owner = "steffen";
+      repo = "website-ff";
+      host = "git.portuus.de";
+      ref = "main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     git-hooks.url = "github:cachix/git-hooks.nix";
     git-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
