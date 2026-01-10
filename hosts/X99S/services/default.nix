@@ -1,5 +1,6 @@
 {
   imports = [
+    ./charbogen.nix
     ./comfyui-docker.nix
     ./github-runners.nix
     ./nginx.nix
