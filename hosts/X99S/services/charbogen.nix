@@ -7,10 +7,17 @@
     port = 6823;
     domain = "www.role-dice.org";
 
-    secretKeyFile = config.sops.secrets."charbogen/flask_secret".path;
-    dbUriFile = config.sops.secrets."charbogen/db_uri".path;
-    dbCredentialsFile = config.sops.secrets."charbogen/db_credentials".path;
-    userCredentialsFile = config.sops.secrets."charbogen/user_credentials".path;
+    secretKeyFile = config.sops.secrets."charbogen_flask_secret".path;
+    dbUriFile = config.sops.secrets."charbogen_db_uri".path;
+    dbCredentialsFile = config.sops.secrets."charbogen_db_creds".path;
+    userCredentialsFile = config.sops.secrets."charbogen_user_creds".path;
+  };
+
+  sops.secrets = {
+    "charbogen_user_creds" = { owner = "charbogen"; key = "charbogen/user_credentials"; };
+    "charbogen_db_creds" = { owner = "charbogen"; key = "charbogen/db_credentials"; };
+    "charbogen_db_uri" = { owner = "charbogen"; key = "charbogen/db_uri"; };
+    "charbogen_flask_secret" = { owner = "charbogen"; key = "charbogen/flask_secret"; };
   };
 
   services.nginx.virtualHosts."${config.services.charbogen.domain}" = {
