@@ -7,6 +7,7 @@
 {
   imports = [
     inputs.core.nixosModules.common
+    inputs.charbogen.nixosModules.default
 
     outputs.nixosModules.common
 

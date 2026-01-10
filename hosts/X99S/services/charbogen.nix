@@ -12,4 +12,13 @@
     dbCredentialsFile = config.sops.secrets."charbogen_db_creds".path;
     userCredentialsFile = config.sops.secrets."charbogen_user_creds".path;
   };
+
+  services.nginx.virtualHosts."${config.services.charbogen.domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString config.services.charbogen.port}";
+      proxyWebsockets = true;
+    };
+  };
 }
