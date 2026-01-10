@@ -4,8 +4,23 @@
     nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    core.url = "github:sid115/nix-core/release-25.11";
-    core.inputs.nixpkgs.follows = "nixpkgs";
+    core = {
+      type = "gitlab";
+      owner = "sid";
+      repo = "nix-core";
+      host = "git.portuus.de";
+      ref = "release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    charbogen = {
+      type = "gitlab";
+      owner = "pnp";
+      repo = "charbogen";
+      host = "git.portuus.de";
+      rev = "feature/nix_module";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     git-hooks.url = "github:cachix/git-hooks.nix";
     git-hooks.inputs.nixpkgs.follows = "nixpkgs";
