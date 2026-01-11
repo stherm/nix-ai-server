@@ -27,7 +27,7 @@
       owner = "steffen";
       repo = "website-ff";
       host = "git.portuus.de";
-      ref = "main";
+      ref = "feuerwehr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

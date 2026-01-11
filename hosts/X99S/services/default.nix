@@ -7,5 +7,6 @@
     ./ollama.nix
     ./openssh.nix
     ./postgres.nix
+    ./website-ff.nix
   ];
 }
