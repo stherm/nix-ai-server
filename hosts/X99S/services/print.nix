@@ -13,4 +13,7 @@
     reverseProxy.enable = false;
   };
 
+  # Override tempDir to default to fix hpfax/cups crashes
+  services.printing.tempDir = lib.mkForce "/tmp";
+
 }
