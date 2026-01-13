@@ -121,11 +121,11 @@
       },
       "locked": {
         "host": "git.portuus.de",
-        "lastModified": 1767972460,
-        "narHash": "sha256-GRig4z18BCDG2O+iPlecJGIGaRRWDN/UqLW6gKUicCA=",
+        "lastModified": 1768147292,
+        "narHash": "sha256-ewEFDEDlDkWHyxzBhc9oqS95f4BzZ6F74Ty9icyngko=",
         "owner": "sid",
         "repo": "nix-core",
-        "rev": "75b4ec44df89818241465b685a639cc6d71709c0",
+        "rev": "eccd013a84edb24dcfb8d0550d18335c7ad1c449",
         "type": "gitlab"
       },
       "original": {
@@ -541,11 +541,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767211904,
-        "narHash": "sha256-VyFm98ul3cp2kJoMizI65o9YNXP2HovUehiLDLIsvPg=",
+        "lastModified": 1768164914,
+        "narHash": "sha256-es15bNCL5mpgBm8KQlIday+OpOikKfIqIpo/Y0IgEMY=",
         "owner": "tale",
         "repo": "headplane",
-        "rev": "4046c6edb1c15f4daeb84993ee50bc89bdb548c2",
+        "rev": "d189d75d5d062c9618933288c84f6676f3dad00e",
         "type": "github"
       },
       "original": {
@@ -664,11 +664,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1767892417,
-        "narHash": "sha256-dhhvQY67aboBk8b0/u0XB6vwHdgbROZT3fJAjyNh5Ww=",
+        "lastModified": 1768127708,
+        "narHash": "sha256-1Sm77VfZh3mU0F5OqKABNLWxOuDeHIlcFjsXeeiPazs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3497aa5c9457a9d88d71fa93a4a8368816fbeeba",
+        "rev": "ffbc9f8cbaacfb331b6017d5a5abb21a492c9a38",
         "type": "github"
       },
       "original": {
@@ -820,11 +820,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768104471,
-        "narHash": "sha256-HdnXWQsA1EI27IJlaENUEEug58trUrh6+MT0cFiDHmY=",
+        "lastModified": 1768271704,
+        "narHash": "sha256-jJqlW8A3OZ5tYbXphF7U8P8g/3Cn8PPwPa4YlJ/9agg=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "94f9cbd20f680ebb2ad6cdf39da97cbcfaedf004",
+        "rev": "691b8b6713855d0fe463993867291c158472fc6f",
         "type": "github"
       },
       "original": {
@@ -1018,17 +1018,17 @@
       },
       "locked": {
         "host": "git.portuus.de",
-        "lastModified": 1768128937,
-        "narHash": "sha256-WVTmVnk4I9OmKADMbdxIoUwNhQ4mH3lwfDjcP74esAM=",
+        "lastModified": 1768303300,
+        "narHash": "sha256-+S60zMiEplxkIFSl/8avwdOZSdtbpGIo5On0ydY8WMw=",
         "owner": "steffen",
         "repo": "website-ff",
-        "rev": "434a8093d38f11cbf491a9f09e23e20ab84d0235",
+        "rev": "f18951a093912fb10e83074281c6ee16dc8204b9",
         "type": "gitlab"
       },
       "original": {
         "host": "git.portuus.de",
         "owner": "steffen",
-        "ref": "feuerwehr",
+        "ref": "main",
         "repo": "website-ff",
         "type": "gitlab"
       }
