@@ -541,11 +541,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768362851,
-        "narHash": "sha256-9a6F6AetLuyiSTRfFvOj5StK0j5FiqHvf2nQoUj/FBA=",
+        "lastModified": 1768541590,
+        "narHash": "sha256-02n/U1b1phd/jhe4DOXdGBZZnp3h/W1t4q8HtH6kIpw=",
         "owner": "tale",
         "repo": "headplane",
-        "rev": "42ffe694864ab48b4661621f1fa07e59b976f94e",
+        "rev": "403f9c9b0bdc12dade137250be48c8bc7f51bdbb",
         "type": "github"
       },
       "original": {
@@ -820,11 +820,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768271704,
-        "narHash": "sha256-jJqlW8A3OZ5tYbXphF7U8P8g/3Cn8PPwPa4YlJ/9agg=",
+        "lastModified": 1768481291,
+        "narHash": "sha256-NjKtkJraCZEnLHAJxLTI+BfdU//9coAz9p5TqveZwPU=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "691b8b6713855d0fe463993867291c158472fc6f",
+        "rev": "e085e303dfcce21adcb5fec535d65aacb066f101",
         "type": "github"
       },
       "original": {
@@ -1018,11 +1018,11 @@
       },
       "locked": {
         "host": "git.portuus.de",
-        "lastModified": 1768465219,
-        "narHash": "sha256-WVLj3cCHMoLnQa+nM5H2rMvLHPZyitIFaPXXVg5sNOQ=",
+        "lastModified": 1768542040,
+        "narHash": "sha256-fxlxEMxWsHs2leLKCc92gyq0M9WJ5JyI+JY0ndYTlXw=",
         "owner": "steffen",
         "repo": "website-ff",
-        "rev": "c1f27949448c0f49ed403f529b9dbdfcc4059c70",
+        "rev": "a5d5b85e8b196e8a30f839ff14249c257e074f13",
         "type": "gitlab"
       },
       "original": {
