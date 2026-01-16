@@ -9,3 +9,7 @@ creation_rules:
           - *host_x99s
           - *user_sid
           - *user_steffen
+  - path_regex: hosts/edge/secrets/secrets.yaml$
+    key_groups:
+      - age:
+          - *user_steffen

@@ -87,6 +87,7 @@
 
       nixosConfigurations = {
         X99S = mkNixosConfiguration "X99S" "x86_64-linux";
+        edge = mkNixosConfiguration "edge" "x86_64-linux";
       };
 
       formatter = forAllSystems (
