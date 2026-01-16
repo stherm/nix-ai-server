@@ -4,6 +4,8 @@
     ./comfyui-docker.nix
     ./einsatzloader.nix
     ./github-runners.nix
+    ./headplane.nix
+    ./headscale.nix
     ./nginx.nix
     ./ollama.nix
     ./openssh.nix
