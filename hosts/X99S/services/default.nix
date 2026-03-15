@@ -3,11 +3,11 @@
     ./charbogen.nix
     ./comfyui-docker.nix
     ./einsatzloader.nix
-    ./github-runners.nix
-    ./headplane.nix
+    #./github-runners.nix
+    #./headplane.nix
     ./headscale.nix
     ./nginx.nix
-    ./ollama.nix
+    #./ollama.nix
     ./openssh.nix
     ./postgres.nix
     ./tailscale.nix

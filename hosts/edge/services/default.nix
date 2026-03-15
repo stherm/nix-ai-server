@@ -4,7 +4,7 @@
 
 {
   imports = [
-    ./headplane.nix
+    #./headplane.nix
     ./headscale.nix
     ./nginx.nix
     ./openssh.nix

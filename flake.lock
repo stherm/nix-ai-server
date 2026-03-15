@@ -93,11 +93,11 @@
       },
       "locked": {
         "host": "git.portuus.de",
-        "lastModified": 1768067302,
-        "narHash": "sha256-/X1sFpbMbjhFV1yNXkvMfr1K7yHF1MJvO0opPAJ0me0=",
+        "lastModified": 1773568658,
+        "narHash": "sha256-qMBLmPPsXo1ibaTRV3KZdeF2VQnjDp9c1CrY13SvfGs=",
         "owner": "pnp",
         "repo": "charbogen",
-        "rev": "92982be0f648d46fd56fb970d88eee262f1a373f",
+        "rev": "24e2c4e0df60fadf1e165ec5c2d3757982737166",
         "type": "gitlab"
       },
       "original": {
